@@ -1,24 +1,26 @@
 {
+  "name": "easy-shadcn",
   "private": true,
   "scripts": {
     "build": "turbo build",
     "dev": "turbo dev",
     "lint": "turbo lint",
-    "clean": "turbo clean && rm -rf node_modules",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "changeset": "changeset",
-    "version-packages": "changeset version",
-    "release": "turbo build --filter=docs^... && changeset publish"
+    "clean": "turbo clean && rimraf .turbo",
+    "ci:version": "changeset version",
+    "ci:publish": "turbo build --filter=docs^... && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
-    "turbo": "^2.0.11"
+    "rimraf": "^6.0.1",
+    "tsup": "^8.2.4",
+    "turbo": "^2.0.11",
+    "typescript": "^5.5.4"
   },
   "packageManager": "pnpm@8.15.6",
   "engines": {
-    "node": ">=18"
-  },
-  "name": "with-changesets"
+    "node": ">=18",
+    "pnpm": ">=8.x"
+  }
 }

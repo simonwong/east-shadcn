@@ -1,0 +1,29 @@
+---
+title: 安装
+---
+
+# 安装
+
+## 手动安装
+
+### 安装依赖
+
+```codeBlock bash
+pnpm add @easy-shadcn/ui
+```
+
+### 配置 Tailwind CSS
+
+```js {7}
+// tailwind.config
+import type { Config } from "tailwindcss";
+
+const config: Config = {
+  content: [
+    // ...
+    './node_modules/@easy-shadcn/ui/dist/**/*.{js,ts,jsx,tsx}'
+  ],
+  // ....
+};
+// ...
+```
