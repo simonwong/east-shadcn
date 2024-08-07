@@ -14,9 +14,11 @@
     "dev": "tsup --watch",
     "clean": "rimraf dist .turbo"
   },
-  "devDependencies": {
-  },
   "publishConfig": {
     "access": "public"
+  },
+  "dependencies": {
+    "clsx": "^2.1.1",
+    "tailwind-merge": "^2.4.0"
   }
 }

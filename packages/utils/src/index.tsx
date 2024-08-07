@@ -1,3 +1,1 @@
-export const foo = () => {
-  console.log('foo')
-}
+export * from './cn'
