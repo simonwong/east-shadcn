@@ -32,7 +32,7 @@ importers:
 
   apps/docs:
     dependencies:
-      '@easy-shadcn/ui':
+      '@easy-shadcn/react':
         specifier: workspace:^
         version: link:../../packages/ui
       '@tailwindcss/typography':

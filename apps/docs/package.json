@@ -9,14 +9,15 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@easy-shadcn/ui": "workspace:^",
+    "@easy-shadcn/react": "workspace:^",
     "@tailwindcss/typography": "^0.5.13",
     "contentlayer": "^0.3.4",
     "dayjs": "^1.11.12",
     "next": "14.2.5",
     "next-contentlayer": "^0.3.4",
     "react": "^18",
-    "react-dom": "^18"
+    "react-dom": "^18",
+    "tailwindcss-animate": "^1.0.7"
   },
   "devDependencies": {
     "@types/node": "^20",
