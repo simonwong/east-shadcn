@@ -9,10 +9,20 @@ title: 安装
 ### 安装依赖
 
 ```codeBlock bash
-pnpm add @easy-shadcn/react
+pnpm add @easy-shadcn/react @easy-shadcn/utils
 ```
 
-### 配置 Tailwind CSS
+### 配置 tailwindcss
+
+参考 [shadcn/ui Manual Installation](https://ui.shadcn.com/docs/installation/manual).
+1. Add Tailwind CSS
+2. Configure path aliases
+3. Configure tailwind.config.js
+4. Configure styles
+
+### 修改 Tailwind CSS 配置
+
+添加 `'./node_modules/@easy-shadcn/react/dist/**/*.{js,ts,jsx,tsx}'`。整个组件库的主题都会跟随你的配置
 
 ```js {7}
 // tailwind.config

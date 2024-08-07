@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import { Inter as FontSans } from "next/font/google"
+import MainNav from "@/components/main-nav";
+
 import "./globals.css";
 
 const fontSans = FontSans({
@@ -10,6 +12,14 @@ const fontSans = FontSans({
 export const metadata: Metadata = {
   title: "Simple Shadcn",
   description: "Use shadcn/ui easy",
+  keywords: [
+    "Next.js",
+    "React",
+    "Tailwind CSS",
+    "Server Components",
+    "Radix UI",
+    "Simple Radix UI",
+  ],
 };
 
 export default function RootLayout({
@@ -19,7 +29,12 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={fontSans.variable}>{children}</body>
+      <body
+        className={fontSans.variable}
+      >
+        <MainNav />
+        {children}
+      </body>
     </html>
   );
 }

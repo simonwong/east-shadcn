@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@easy-shadcn/react": "workspace:^",
+    "@easy-shadcn/utils": "workspace:^",
     "@tailwindcss/typography": "^0.5.13",
     "contentlayer": "^0.3.4",
     "dayjs": "^1.11.12",
