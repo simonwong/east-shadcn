@@ -1,8 +1,8 @@
 import { notFound } from "next/navigation"
 import { allDocs } from "contentlayer/generated"
 import type { Metadata } from "next"
-import { useMDXComponent } from "next-contentlayer/hooks"
 import { absoluteUrl } from "@/utils"
+import { MDXContent } from "@/components/mdx-content"
 
 interface DocPageProps {
   params: {
@@ -10,7 +10,7 @@ interface DocPageProps {
   }
 }
 
-function getDocFromParams({ params }: DocPageProps) {
+async function getDocFromParams({ params }: DocPageProps) {
   const slug = params.slug?.join("/") || ""
   const doc = allDocs.find((doc) => doc.slugAsParams === slug)
 
@@ -57,19 +57,15 @@ export async function generateStaticParams(): Promise<DocPageProps["params"][]> 
 }
 
 export default async function DocPage({ params }: DocPageProps) {
-  const doc = getDocFromParams({ params })
+  const doc = await getDocFromParams({ params })
 
   if (doc == null) {
     notFound()
   } 
 
-  const MDXContent = useMDXComponent(doc.body.code)
-
   return (
     <main className="relative py-6 lg:gap-10 lg:py-8 xl:grid xl:grid-cols-[1fr_300px]">
-      <article className="prose">
-        <MDXContent />
-      </article>
+      <MDXContent code={doc.body.code} />
     </main>
   )
 }

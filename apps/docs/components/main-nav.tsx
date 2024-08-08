@@ -9,6 +9,19 @@ interface MainNavProps { }
 const MainNav: React.FC<MainNavProps> = () => {
   const pathname = usePathname()
 
+  const links = [
+    {
+      href: '/docs/guide',
+      light: '/docs/guide',
+      title: 'Docs'
+    },
+    {
+      href: '/docs/components/button',
+      light: '/docs/components',
+      title: 'Components'
+    },
+  ]
+
   return (
     <div className="container">
       <div className="flex py-4">
@@ -18,27 +31,20 @@ const MainNav: React.FC<MainNavProps> = () => {
           </span>
         </Link>
         <nav className="flex items-center gap-4 text-sm lg:gap-6">
-          <Link
-            href="/docs"
-            className={cn(
-              "transition-colors hover:text-foreground/80",
-              pathname === "/docs" ? "text-foreground" : "text-foreground/60"
-            )}
-          >
-            Docs
-          </Link>
-          <Link
-            href="/docs/components"
-            className={cn(
-              "transition-colors hover:text-foreground/80",
-              pathname?.startsWith("/docs/components") &&
-                !pathname?.startsWith("/docs/component/chart")
-                ? "text-foreground"
-                : "text-foreground/60"
-            )}
-          >
-            Components
-          </Link>
+          {
+            links.map(link => (
+              <Link
+                key={link.href}
+                href={link.href}
+                className={cn(
+                  "transition-colors hover:text-foreground/80",
+                  pathname.includes(link.light) ? "text-foreground" : "text-foreground/60"
+                )}
+              >
+                {link.title}
+              </Link>
+            ))
+          }
         </nav>
       </div>
     </div>

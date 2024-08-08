@@ -16,14 +16,23 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                 items: [
                   {
                     title: 'Introduction',
-                    href: "/docs",
+                    href: "/docs/guide",
                   },
                   {
                     title: 'Installation',
                     href: "/docs/guide/installation",
                   }
                 ]
-              }
+              },
+              {
+                title: 'Components',
+                items: [
+                  {
+                    title: 'Button',
+                    href: "/docs/components/button",
+                  },
+                ]
+              },
             ]}
           />
         </div>
