@@ -16,7 +16,8 @@
     "resolveJsonModule": true,
     "allowSyntheticDefaultImports": true,
     "downlevelIteration": true,
-    "noImplicitAny": false
+    "noImplicitAny": false,
+    "forceConsistentCasingInFileNames": true
   },
   "include": ["packages"],
   "exclude": ["**/node_modules", "**/dist", "**/.turbo"]
