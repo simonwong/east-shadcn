@@ -31,6 +31,10 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                     title: 'Button',
                     href: "/docs/components/button",
                   },
+                  {
+                    title: 'Tabs',
+                    href: "/docs/components/tabs",
+                  },
                 ]
               },
             ]}

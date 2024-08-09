@@ -1,0 +1,58 @@
+---
+title: Tabs
+---
+
+## Usage
+
+```tsx
+import { Tabs } from "@easy-shadcn/react"
+
+<Tabs
+  defaultValue="first"
+  option={[
+    {
+      title: 'First',
+      key: 'first',
+      content: (
+        <div>First Content</div>
+      )
+    },
+    {
+      title: 'Second',
+      key: 'Second',
+      content: (
+        <div>Second Content</div>
+      )
+    },
+  ]}
+/>
+```
+
+
+<CodeDemo code={`
+const Demo = () => {
+  return (
+    <Tabs
+      defaultValue="first"
+      option={[
+        {
+          title: 'First',
+          key: 'first',
+          content: (
+            <div>First Content</div>
+          )
+        },
+        {
+          title: 'Second',
+          key: 'Second',
+          content: (
+            <div>Second Content</div>
+          )
+        },
+      ]}
+    />
+  )
+}
+render(<Demo />)
+`}
+/>
