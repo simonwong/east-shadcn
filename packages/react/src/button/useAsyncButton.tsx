@@ -1,4 +1,4 @@
-import { ButtonProps } from "@/components/ui/button";
+import { ButtonProps } from "../../components/ui/button";
 import { Loader2 } from "lucide-react";
 import { MouseEvent, MouseEventHandler, useState } from "react";
 

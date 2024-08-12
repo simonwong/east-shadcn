@@ -1,4 +1,4 @@
-import { Button as InternalButton } from '@/components/ui/button'
+import { Button as InternalButton } from '../../components/ui/button'
 import { AsyncButtonProps, useAsyncButton } from './useAsyncButton';
 import React from 'react';
 

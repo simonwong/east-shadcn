@@ -2,15 +2,17 @@
   "name": "easy-shadcn",
   "private": true,
   "scripts": {
+    "dev": "turbo dev --filter=@easy-shadcn/storybook",
+    "docs": "turbo dev --filter=@easy-shadcn/docs",
     "build": "turbo build",
-    "dev": "turbo dev",
     "lint": "turbo lint",
     "clean": "turbo clean && rimraf .turbo",
     "ci:version": "changeset version",
-    "ci:publish": "turbo build --filter=docs^... && changeset publish"
+    "ci:publish": "turbo build --filter={./packages/*} && changeset publish"
   },
   "devDependencies": {
     "@changesets/cli": "^2.27.1",
+    "@storybook/react": "^8.2.8",
     "eslint": "^8.57.0",
     "prettier": "^3.2.5",
     "rimraf": "^6.0.1",

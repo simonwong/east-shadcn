@@ -34,12 +34,12 @@ export const CodeDemo: React.FC<CodeDemoProps> = (props) => {
         option={[
           {
             title: 'Preview',
-            key: 'preview',
+            value: 'preview',
             content: previewContent
           },
           {
             title: 'Code',
-            key: 'code',
+            value: 'code',
             content: (
               <pre className="m-0">
                 {code ? code.trim() : ''}
