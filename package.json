@@ -3,7 +3,7 @@
   "private": true,
   "scripts": {
     "dev": "turbo dev --filter=@easy-shadcn/storybook",
-    "docs": "turbo dev --filter=@easy-shadcn/docs",
+    "docs:dev": "turbo dev --filter=@easy-shadcn/docs --filter={./packages/*}",
     "build": "turbo build",
     "lint": "turbo lint",
     "clean": "turbo clean && rimraf .turbo",

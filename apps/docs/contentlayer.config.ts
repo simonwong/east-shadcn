@@ -1,4 +1,5 @@
-import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer/source-files'
+import { ComputedFields, defineDocumentType, makeSource } from 'contentlayer2/source-files'
+import remarkGfm from 'remark-gfm'
 
 const computedFields: ComputedFields = {
   slug: {
@@ -27,4 +28,7 @@ export const Doc = defineDocumentType(() => ({
 export default makeSource({
   contentDirPath: './content',
   documentTypes: [Doc],
+  mdx: {
+    remarkPlugins: [remarkGfm],
+  }
 })

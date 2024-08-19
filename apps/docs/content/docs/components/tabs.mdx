@@ -28,6 +28,9 @@ import { Tabs } from "@easy-shadcn/react"
 />
 ```
 
+## Examples
+
+### Structured data configuration
 
 <CodeDemo code={`
 const Demo = () => {
@@ -44,7 +47,7 @@ const Demo = () => {
         },
         {
           title: 'Second',
-          value: 'Second',
+          value: 'second',
           content: (
             <div>Second Content</div>
           )
@@ -56,3 +59,95 @@ const Demo = () => {
 render(<Demo />)
 `}
 />
+
+### Controlled
+
+<CodeDemo code={`
+const Demo = () => {
+  const [currentTab, setCurrentTab] = React.useState('first')
+
+  return (
+    <Tabs
+      value={currentTab}
+      onValueChange={setCurrentTab}
+      option={[
+        {
+          title: 'First',
+          value: 'first',
+          content: (
+            <div>
+              <p>First Content</p>
+              <Button onClick={() => setCurrentTab('second')}>Change to Second</Button>
+            </div>
+          )
+        },
+        {
+          title: 'Second',
+          value: 'second',
+          content: (
+            <div>
+              <p>Second Content</p>
+              <Button onClick={() => setCurrentTab('first')}>Change to First</Button>
+            </div>
+          )
+        },
+      ]}
+    />
+  )
+}
+render(<Demo />)
+`}
+/>
+
+### Customize the style
+
+<CodeDemo code={`
+const Demo = () => {
+  return (
+    <Tabs
+      style={{
+        width: '100%',
+      }}
+      defaultValue="first"
+      contentProps={{
+        style: {
+          padding: '10px',
+          border: '1px solid #dfdfdf',
+        }
+      }}
+      option={[
+        {
+          title: 'First',
+          value: 'first',
+          content: (
+            <div>First Content</div>
+          )
+        },
+        {
+          title: 'Second',
+          value: 'second',
+          triggerProps: {
+            style: {
+              fontSize: '20px'
+            }
+          },
+          content: (
+            <div>Second Content</div>
+          )
+        },
+      ]}
+    />
+  )
+}
+render(<Demo />)
+`}
+/>
+
+## API
+
+| Attribute    | Type                                                                                                                        | Description                                                           | Default |
+| :----------- | :-------------------------------------------------------------------------------------------------------------------------- | :-------------------------------------------------------------------- | :------ |
+| option       | `{value: string; title: ReactNode; triggerProps?: TabsTriggerProps; content: ReactNode; contentProps?: TabsContentProps}[]` | Structured Data configuration                                         | -       |
+| listProps    | `TabsListProps`                                                                                                             | Tab trigger tab props                                                 | -       |
+| triggerProps | `TabsTriggerProps`                                                                                                          | Tab trigger props, Each option item will overwrite this configuration | -       |
+| contentProps | `TabsContentProps`                                                                                                          | Tab content props, Each option item will overwrite this configuration | -       |

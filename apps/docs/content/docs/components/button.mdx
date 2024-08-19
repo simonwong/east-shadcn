@@ -10,19 +10,58 @@ import { Button } from "@easy-shadcn/react"
 <Button>Button</Button>
 ```
 
+## Examples
+
+### Variants & Size
+
 <CodeDemo code={`
 const Demo = () => {
   return (
     <div>
-      <Button>default</Button>
-      <Button variant="destructive">destructive</Button>
-      <Button variant="secondary">secondary</Button>
-      <Button variant="outline">outline</Button>
-      <Button variant="ghost">ghost</Button>
-      <Button variant="link">link</Button>
+      <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
+        <Button>default</Button>
+        <Button variant="destructive">destructive</Button>
+        <Button variant="secondary">secondary</Button>
+        <Button variant="outline">outline</Button>
+        <Button variant="ghost">ghost</Button>
+        <Button variant="link">link</Button>
+      </div>
+      <div style={{ display: 'flex', gap: '6px' }}>
+        <Button size="sm">size sm</Button>
+        <Button>size default</Button>
+        <Button size="lg">size lg</Button>
+        <Button size="icon">icon</Button>
+      </div>
     </div>
   )
 }
 render(<Demo />)
 `}
 />
+
+### Auto Loading
+
+<CodeDemo code={`
+const Demo = () => {
+  const handleAsyncAction = async () => {
+    await new Promise(resolve => {
+      setTimeout(() => {
+        resolve()
+      }, 1000)
+    })
+  }
+  return (
+    <Button onClick={handleAsyncAction}>Async Event Auto Loading</Button>
+  )
+}
+render(<Demo />)
+`}
+/>
+
+## API
+
+| Attribute | Type                                                                          | Description                  | Default     |
+| :-------- | :---------------------------------------------------------------------------- | :--------------------------- | :---------- |
+| variant   | `'default' \| 'destructive' \| 'secondary' \| 'outline' \| 'ghost' \| 'link'` | Buuton variants              | `'default'` |
+| size      | `'default' \| 'sm' \| 'lg' \| 'icon'`                                         | Button size                  | `'default'` |
+| onClick   | `(e) => Promise<void> \| void`                                                | Async event auto loading     | `'default'` |
