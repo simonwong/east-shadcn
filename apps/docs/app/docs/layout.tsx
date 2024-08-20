@@ -43,6 +43,10 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                     title: 'Popover',
                     href: "/docs/components/popover",
                   },
+                  {
+                    title: 'Calendar',
+                    href: "/docs/components/calendar",
+                  },
                 ]
               },
             ]}

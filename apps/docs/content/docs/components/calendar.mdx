@@ -1,0 +1,36 @@
+---
+title: Toast
+---
+
+See [React DayPicker](https://react-day-picker.js.org/)
+
+## Usage
+
+```tsx
+import { Calendar } from "@easy-shadcn/react"
+
+<Calendar mode="single" />
+```
+
+## Examples
+
+### Basic
+
+<CodeDemo code={`
+const Demo = () => {
+  const [selected, setSelected] = React.useState<Date>();
+  return (
+    <Calendar
+      selected={selected}
+      onSelect={setSelected}
+      mode="single"
+    />
+  )
+}
+render(<Demo />)
+`}
+/>
+
+## API
+
+See [React DayPicker](https://react-day-picker.js.org/)
