@@ -39,6 +39,10 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                     title: 'Toast',
                     href: "/docs/components/toast",
                   },
+                  {
+                    title: 'Popover',
+                    href: "/docs/components/popover",
+                  },
                 ]
               },
             ]}

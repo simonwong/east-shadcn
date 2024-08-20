@@ -25,4 +25,5 @@ export const parameters: Parameters = {
 export default {
   decorators,
   parameters,
-};
+  tags: ['autodocs']
+} satisfies Preview;
