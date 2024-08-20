@@ -1,3 +1,5 @@
+"use client"
+
 import React, { ReactNode } from "react"
 import { TabsProps as InternalTabsProps, TabsContentProps, TabsListProps, TabsTriggerProps } from "@radix-ui/react-tabs"
 import { Tabs as InternalTabs, TabsContent, TabsList, TabsTrigger } from "../../components/ui/tabs"
