@@ -5,51 +5,61 @@ import { format } from 'date-fns'
 
 import { Popover } from '../popover'
 import { Button } from '../button'
-import { Calendar, CalendarProps } from '../calendar'
-import { DateRange, DayPickerMultipleProps, DayPickerRangeProps, DayPickerSingleProps } from 'react-day-picker'
+import { Calendar } from '../calendar'
+import { DateRange, DayPickerMultipleProps, DayPickerRangeProps, DayPickerSingleProps, SelectMultipleEventHandler, SelectRangeEventHandler, SelectSingleEventHandler } from 'react-day-picker'
 
 type DatePickerMode = "single" | "multiple" | "range"
 
 export type DatePickerProps = {
   placeholder?: string
   buttonClassName?: string
+  dateFormat?: string
   mode?: DatePickerMode
-} & CalendarProps
+} & (
+  | (Omit<DayPickerSingleProps, 'mode'> & { mode?: 'single' })
+  | DayPickerMultipleProps
+  | DayPickerRangeProps
+)
 
-const useAllModeProps = (mode: DatePickerMode) => {
+const useAllModeProps = ({ mode, dateFormat, selected, onSelect }: {
+  mode: DatePickerMode,
+  dateFormat: string,
+  selected?: DatePickerProps['selected'],
+  onSelect?: DatePickerProps['onSelect'],
+}) => {
   const [singleDate, setSingleDate] = React.useState<Date>()
   const [multiDate, setMultiDate] = React.useState<Date[]>()
   const [rangeDate, setRangeDate] = React.useState<DateRange>()
 
   const singleProps = {
     mode: 'single',
-    selected: singleDate,
-    onSelect: setSingleDate,
+    selected: (selected as Date) || singleDate,
+    onSelect: (onSelect as SelectSingleEventHandler) || setSingleDate,
   } satisfies DayPickerSingleProps
 
   const multiProps = {
     mode: 'multiple',
-    selected: multiDate,
-    onSelect: setMultiDate,
+    selected: (selected as Date[]) || multiDate,
+    onSelect: (onSelect as SelectMultipleEventHandler) || setMultiDate,
   } satisfies DayPickerMultipleProps
 
   const rangeProps = {
     mode: 'range',
-    selected: rangeDate,
-    onSelect: setRangeDate,
+    selected: (selected as DateRange) || rangeDate,
+    onSelect: (onSelect as SelectRangeEventHandler) || setRangeDate,
   } satisfies DayPickerRangeProps
 
   const modeMap = {
     single: {
       props: singleProps,
       renderText: () => {
-        return singleProps.selected ? format(singleProps.selected, "PPP") : null
+        return singleProps.selected ? format(singleProps.selected, dateFormat) : null
       }
     },
     multiple: {
       props: multiProps,
       renderText: () => {
-        return multiProps.selected ? multiProps.selected.map(dt => format(dt, "PPP")).join(', ') : null
+        return multiProps.selected ? multiProps.selected.map(dt => format(dt, dateFormat)).join(', ') : null
       }
     },
     range: {
@@ -59,26 +69,34 @@ const useAllModeProps = (mode: DatePickerMode) => {
           rangeProps.selected.from ? (
             rangeProps.selected.to ? (
               <>
-                {format(rangeProps.selected.from, "LLL dd, y")}{" "}-{" "}
-                {format(rangeProps.selected.to, "LLL dd, y")}
+                {format(rangeProps.selected.from, dateFormat)}{" "}-{" "}
+                {format(rangeProps.selected.to, dateFormat)}
               </>
-            ) : format(rangeProps.selected.from, "LLL dd, y")
+            ) : format(rangeProps.selected.from, dateFormat)
           ) : null
         ) : null
       }
     },
   }
 
-  return modeMap[mode]
+  return modeMap[mode!]
 }
 
 export const DatePicker: React.FC<DatePickerProps> = ({
   placeholder = "Pick a date",
   mode = 'single',
+  dateFormat = 'yyyy-MM-dd',
   buttonClassName,
+  selected,
+  onSelect,
   ...resetProps
 }) => {
-  const allMode = useAllModeProps(mode)
+  const allMode = useAllModeProps({
+    mode,
+    dateFormat,
+    selected,
+    onSelect,
+  })
 
   return (
     <Popover

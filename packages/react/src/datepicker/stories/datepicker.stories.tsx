@@ -1,6 +1,7 @@
 import type { Meta, StoryObj } from '@storybook/react';
 // import { fn } from '@storybook/test';
 import { DatePicker } from '../index';
+import { useState } from 'react';
 
 // More on how to set up stories at: https://storybook.js.org/docs/writing-stories#default-export
 const meta = {
@@ -19,3 +20,17 @@ export const Normal: Story = {
   args: {
   },
 };
+
+
+export const Controlled: Story = {
+  render: () => {
+    const [date, setDate] = useState<Date[] | undefined>([new Date()])
+    return (
+      <DatePicker
+        mode="multiple"
+        selected={date}
+        onSelect={setDate}
+      />
+    )
+  }
+}
