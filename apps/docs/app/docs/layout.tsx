@@ -47,6 +47,10 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                     title: 'Calendar',
                     href: "/docs/components/calendar",
                   },
+                  {
+                    title: 'DatePicker',
+                    href: "/docs/components/datepicker",
+                  },
                 ]
               },
             ]}

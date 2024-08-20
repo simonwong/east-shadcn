@@ -1,0 +1,34 @@
+---
+title: DatePicker
+---
+
+## Usage
+
+```tsx
+import { DatePicker } from "@easy-shadcn/react"
+
+<DatePicker />
+```
+
+## Examples
+
+### Basic
+
+<CodeDemo code={`
+const Demo = () => {
+  return (
+    <DatePicker />
+  )
+}
+render(<Demo />)
+`}
+/>
+
+## API
+
+
+| Attribute       | Type                                | Description      | Default    |
+| :-------------- | :---------------------------------- | :--------------- | :--------- |
+| mode            | `'single' \| 'multiple' \| 'range'` | Datepicker Mode  | `'single'` |
+| placeholder     | `string`                            | Default text     | -          |
+| buttonClassName | `string`                            | Button classname | -          |
