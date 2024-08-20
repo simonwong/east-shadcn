@@ -1,0 +1,43 @@
+---
+title: ConfigProvider
+---
+
+## Usage
+
+```tsx
+import { ConfigProvider } from "@easy-shadcn/react"
+import { zhCN } from 'date-fns/locale';
+
+// Root
+<ConfigProvider
+  dateLocal={zhCN}
+>
+  {children}
+</ConfigProvider>
+```
+
+## Examples
+
+### Set Date Local
+
+<CodeDemo code={`
+const Demo = () => {
+  return (
+    <ConfigProvider
+      dateLocal={zhCN}
+    >
+      <div>
+        <Calendar />
+      </div>
+    </ConfigProvider>
+  )
+}
+render(<Demo />)
+`}
+/>
+
+## API
+
+| Attribute   | Type    | Description                  | Default     |
+| :---------- | :------ | :--------------------------- | :---------- |
+| dateLocal   | `Local` | local from date-fns/locale   | - |

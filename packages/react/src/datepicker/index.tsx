@@ -6,7 +6,16 @@ import { format } from 'date-fns'
 import { Popover } from '../popover'
 import { Button } from '../button'
 import { Calendar } from '../calendar'
-import { DateRange, DayPickerMultipleProps, DayPickerRangeProps, DayPickerSingleProps, SelectMultipleEventHandler, SelectRangeEventHandler, SelectSingleEventHandler } from 'react-day-picker'
+import { useConfigContext } from '../config-provider'
+import {
+  DateRange,
+  DayPickerMultipleProps,
+  DayPickerRangeProps,
+  DayPickerSingleProps,
+  SelectMultipleEventHandler,
+  SelectRangeEventHandler,
+  SelectSingleEventHandler,
+} from 'react-day-picker'
 
 type DatePickerMode = "single" | "multiple" | "range"
 
@@ -52,18 +61,21 @@ const useAllModeProps = ({ mode, dateFormat, selected, onSelect }: {
   const modeMap = {
     single: {
       props: singleProps,
+      hasValue: !!singleProps.selected,
       renderText: () => {
         return singleProps.selected ? format(singleProps.selected, dateFormat) : null
       }
     },
     multiple: {
       props: multiProps,
+      hasValue: multiProps.selected && multiProps.selected.length > 0,
       renderText: () => {
         return multiProps.selected ? multiProps.selected.map(dt => format(dt, dateFormat)).join(', ') : null
       }
     },
     range: {
       props: rangeProps,
+      hasValue: !!rangeProps.selected && !!rangeProps.selected.from,
       renderText: () => {
         return rangeProps.selected ? (
           rangeProps.selected.from ? (
@@ -91,6 +103,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
   onSelect,
   ...resetProps
 }) => {
+  const { dateLocal } = useConfigContext()
   const allMode = useAllModeProps({
     mode,
     dateFormat,
@@ -107,6 +120,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
       content={
         <Calendar
           initialFocus
+          locale={dateLocal}
           {...resetProps}
           {...allMode.props}
         />
@@ -116,7 +130,7 @@ export const DatePicker: React.FC<DatePickerProps> = ({
         variant={"outline"}
         className={cn(
           "justify-start text-left font-normal",
-          !allMode.props.selected && "text-muted-foreground",
+          !allMode.hasValue && "text-muted-foreground",
           buttonClassName
         )}
       >

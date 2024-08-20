@@ -51,6 +51,10 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                     title: 'DatePicker',
                     href: "/docs/components/datepicker",
                   },
+                  {
+                    title: 'ConfigProvider',
+                    href: "/docs/components/config-provider",
+                  },
                 ]
               },
             ]}
