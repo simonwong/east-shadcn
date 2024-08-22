@@ -32,116 +32,15 @@ import { Tabs } from "@easy-shadcn/react"
 
 ### Structured data configuration
 
-<CodeDemo code={`
-const Demo = () => {
-  return (
-    <Tabs
-      defaultValue="first"
-      option={[
-        {
-          title: 'First',
-          value: 'first',
-          content: (
-            <div>First Content</div>
-          )
-        },
-        {
-          title: 'Second',
-          value: 'second',
-          content: (
-            <div>Second Content</div>
-          )
-        },
-      ]}
-    />
-  )
-}
-render(<Demo />)
-`}
-/>
+<ExamplePreview name="tabs-demo" />
 
 ### Controlled
 
-<CodeDemo code={`
-const Demo = () => {
-  const [currentTab, setCurrentTab] = React.useState('first')
-
-  return (
-    <Tabs
-      value={currentTab}
-      onValueChange={setCurrentTab}
-      option={[
-        {
-          title: 'First',
-          value: 'first',
-          content: (
-            <div>
-              <p>First Content</p>
-              <Button onClick={() => setCurrentTab('second')}>Change to Second</Button>
-            </div>
-          )
-        },
-        {
-          title: 'Second',
-          value: 'second',
-          content: (
-            <div>
-              <p>Second Content</p>
-              <Button onClick={() => setCurrentTab('first')}>Change to First</Button>
-            </div>
-          )
-        },
-      ]}
-    />
-  )
-}
-render(<Demo />)
-`}
-/>
+<ExamplePreview name="tabs-controlled" />
 
 ### Customize the style
 
-<CodeDemo code={`
-const Demo = () => {
-  return (
-    <Tabs
-      style={{
-        width: '100%',
-      }}
-      defaultValue="first"
-      contentProps={{
-        style: {
-          padding: '10px',
-          border: '1px solid #dfdfdf',
-        }
-      }}
-      option={[
-        {
-          title: 'First',
-          value: 'first',
-          content: (
-            <div>First Content</div>
-          )
-        },
-        {
-          title: 'Second',
-          value: 'second',
-          triggerProps: {
-            style: {
-              fontSize: '20px'
-            }
-          },
-          content: (
-            <div>Second Content</div>
-          )
-        },
-      ]}
-    />
-  )
-}
-render(<Demo />)
-`}
-/>
+<ExamplePreview name="tabs-customize-style" />
 
 ## API
 

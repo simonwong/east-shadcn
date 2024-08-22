@@ -1,7 +1,7 @@
 "use client";
 
 import {useMDXComponent} from "next-contentlayer2/hooks";
-import { CodeDemo, CodeDemoProps } from "./docs/code-demo";
+import { ExamplePreview } from "./docs/example-preview";
 
 interface MDXContentProps {
   code: string;
@@ -14,7 +14,7 @@ export function MDXContent({ code }: MDXContentProps) {
     <article className="prose">
       <Component
         components={{
-          CodeDemo: (props: CodeDemoProps) => <CodeDemo {...props} />
+          ExamplePreview,
         }}
       />
     </article>

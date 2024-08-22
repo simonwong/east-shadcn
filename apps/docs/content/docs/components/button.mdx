@@ -14,49 +14,11 @@ import { Button } from "@easy-shadcn/react"
 
 ### Variants & Size
 
-<CodeDemo code={`
-const Demo = () => {
-  return (
-    <div>
-      <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
-        <Button>default</Button>
-        <Button variant="destructive">destructive</Button>
-        <Button variant="secondary">secondary</Button>
-        <Button variant="outline">outline</Button>
-        <Button variant="ghost">ghost</Button>
-        <Button variant="link">link</Button>
-      </div>
-      <div style={{ display: 'flex', gap: '6px' }}>
-        <Button size="sm">size sm</Button>
-        <Button>size default</Button>
-        <Button size="lg">size lg</Button>
-        <Button size="icon">icon</Button>
-      </div>
-    </div>
-  )
-}
-render(<Demo />)
-`}
-/>
+<ExamplePreview name="button-demo" />
 
 ### Auto Loading
 
-<CodeDemo code={`
-const Demo = () => {
-  const handleAsyncAction = async () => {
-    await new Promise(resolve => {
-      setTimeout(() => {
-        resolve()
-      }, 1000)
-    })
-  }
-  return (
-    <Button onClick={handleAsyncAction}>Async Event Auto Loading</Button>
-  )
-}
-render(<Demo />)
-`}
-/>
+<ExamplePreview name="button-async-action" />
 
 ## API
 
