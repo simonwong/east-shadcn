@@ -1,6 +1,5 @@
 {
   "name": "@easy-shadcn/docs",
-  "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "pnpm generate-example && next dev",
