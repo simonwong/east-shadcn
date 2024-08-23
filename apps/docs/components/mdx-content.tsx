@@ -15,6 +15,7 @@ export function MDXContent({ code }: MDXContentProps) {
       <Component
         components={{
           ExamplePreview,
+          a: (props) => <a target="__blank" {...props} />
         }}
       />
     </article>

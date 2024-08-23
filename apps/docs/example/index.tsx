@@ -100,7 +100,27 @@ export default Demo
 
 const Demo = () => {
   return (
-    <DatePicker />
+    <div className="flex gap-6 flex-wrap">
+      <DatePicker />
+      <DatePicker mode="multiple" placeholder="Pick multiple date" />
+      <DatePicker buttonClassName="w-64" mode="range" placeholder="Pick range date" />
+    </div>
+  )
+}
+
+export default Demo
+`
+  },
+
+  "datepicker-format": {
+    component: React.lazy(() => import("./datepicker-format")),
+    codeString: `import { DatePicker } from "@easy-shadcn/react";
+
+const Demo = () => {
+  return (
+    <div className="flex gap-6 flex-wrap">
+      <DatePicker dateFormat="yyyy-MM" />
+    </div>
   )
 }
 

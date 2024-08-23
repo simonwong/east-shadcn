@@ -13,6 +13,10 @@ export const ExamplePreview: React.FC<PropsWithChildren<ExamplePreviewProps>> = 
 }) => {
   const example = ExampleSet[name]
 
+  if (!example) {
+    return <div>Not Found Example: {name}</div>
+  }
+
   const Preview = example.component
 
   return (
@@ -23,7 +27,11 @@ export const ExamplePreview: React.FC<PropsWithChildren<ExamplePreviewProps>> = 
           {
             title: 'Preview',
             value: 'preview',
-            content: <Preview />
+            content: (
+              <div className="rounded-md border p-5 bg-[radial-gradient(#00000020_1px,transparent_1px)] [background-size:16px_16px]">
+                {<Preview />}
+              </div>
+            )
           },
           {
             title: 'Code',
