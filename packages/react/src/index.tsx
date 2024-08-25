@@ -4,4 +4,5 @@ export { Toaster, toast, type ToasterProps } from "./toast";
 export { Popover, type PopoverProps } from "./popover";
 export { Calendar, type CalendarProps } from "./calendar";
 export { DatePicker, type DatePickerProps } from "./datepicker";
+export * from "./modal";
 export { ConfigProvider, useConfigContext, type ConfigContextProps } from "./config-provider";
