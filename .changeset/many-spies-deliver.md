@@ -3,4 +3,4 @@
 "@easy-shadcn/utils": patch
 ---
 
-Project initialization, Add several components with the most basic functions:  Button、Calendar、Datepicker、Popover、Tabs、toast、ConfigProvider.
+Project initialization. Add cn to utils.
