@@ -1,8 +1,11 @@
 {
   "name": "@easy-shadcn/react",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Use shadcn/ui easy&enhance like component library",
-  "keywords": ["shadcnui", "component-library"],
+  "keywords": [
+    "shadcnui",
+    "component-library"
+  ],
   "sideEffects": false,
   "repository": {
     "type": "git",
