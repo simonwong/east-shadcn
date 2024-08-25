@@ -1,11 +1,20 @@
 {
   "name": "@easy-shadcn/utils",
   "version": "0.0.0",
+  "sideEffects": false,
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/simonwong/east-shadcn.git",
+    "directory": "packages/utils"
+  },
+  "author": "Simon <wsj_simon@163.com>",
+  "license": "MIT",
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
-  "sideEffects": false,
-  "license": "MIT",
   "files": [
     "dist/**"
   ],
@@ -13,9 +22,6 @@
     "build": "tsup",
     "dev": "tsup --watch",
     "clean": "rimraf dist .turbo"
-  },
-  "publishConfig": {
-    "access": "public"
   },
   "dependencies": {
     "clsx": "^2.1.1",
