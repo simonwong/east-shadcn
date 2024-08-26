@@ -8,13 +8,13 @@ export interface TabsProps extends InternalTabsProps {
   option: {
     value: string
     title: ReactNode
-    triggerProps?: TabsTriggerProps
+    triggerProps?: Omit<TabsTriggerProps, 'value'>
     content: ReactNode
-    contentProps?: TabsContentProps
+    contentProps?: Omit<TabsContentProps, 'value'>
   }[];
   listProps?: TabsListProps;
-  triggerProps?: TabsTriggerProps;
-  contentProps?: TabsContentProps;
+  triggerProps?: Omit<TabsTriggerProps, 'value'>;
+  contentProps?: Omit<TabsContentProps, 'value'>;
 }
 
 export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
