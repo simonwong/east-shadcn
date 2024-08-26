@@ -119,7 +119,7 @@ export default Demo
 const Demo = () => {
   return (
     <div className="flex gap-6 flex-wrap">
-      <DatePicker dateFormat="yyyy-MM" />
+      <DatePicker dateFormat="PPPP" />
     </div>
   )
 }
