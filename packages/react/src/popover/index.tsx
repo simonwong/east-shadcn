@@ -1,5 +1,5 @@
 import { PropsWithChildren, ReactNode } from 'react'
-import { Popover as InternalPopover, PopoverTrigger, PopoverAnchor, PopoverContent } from '../../components/ui/popover'
+import { Popover as InternalPopover, PopoverTrigger, PopoverContent } from '../../components/ui/popover'
 import { PopoverProps as InternalPopoverProps, PopoverContentProps } from "@radix-ui/react-popover"
 
 export interface PopoverProps extends InternalPopoverProps {
