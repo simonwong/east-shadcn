@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { FileArchiveIcon, UploadCloudIcon } from "lucide-react";
 import { Button } from '../index';
 
 const meta = {
@@ -55,7 +56,7 @@ const AllVariantComp = () => {
         <Button size="sm">sm</Button>
         <Button size="default">default</Button>
         <Button size="lg">lg</Button>
-        <Button size="icon">Icon</Button>
+        <Button size="icon"><UploadCloudIcon /></Button>
       </div>
     </div>
   )
@@ -67,16 +68,24 @@ export const AllVariant: Story = {
 };
 
 const ClickAsyncComp = () => {
+  const handleAsyncClick = async () => {
+    await new Promise((resolve) => {
+      setTimeout(() => {
+        resolve(null)
+      }, 3000)
+    })
+  }
   return (
-    <Button
-      onClick={async () => {
-        await new Promise((resolve) => {
-          setTimeout(() => {
-            resolve(null)
-          }, 3000)
-        })
-      }}
-    >Async Click Auto Loading</Button>
+    <div style={{ display: 'flex', gap: '6px', marginBottom: '6px' }}>
+      <Button onClick={handleAsyncClick}>Async Click Auto Loading</Button>
+      <Button onClick={handleAsyncClick} prefix={<FileArchiveIcon />}>Witch Prefix</Button>
+      <Button
+        onClick={handleAsyncClick}
+        size="icon"
+      >
+        <UploadCloudIcon />
+      </Button>
+    </div>
   )
 }
 
