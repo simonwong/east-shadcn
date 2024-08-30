@@ -6,7 +6,8 @@ export default defineConfig({
     js: "'use client'",
   },
   format: ["cjs", "esm"],
-  external: ["react"],
+  external: ["react", "react-dom"],
   dts: true,
   clean: true,
+  treeshake: true,
 });
