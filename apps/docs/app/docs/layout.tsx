@@ -32,16 +32,8 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                     href: "/docs/components/button",
                   },
                   {
-                    title: 'Tabs',
-                    href: "/docs/components/tabs",
-                  },
-                  {
-                    title: 'Toast',
-                    href: "/docs/components/toast",
-                  },
-                  {
-                    title: 'Popover',
-                    href: "/docs/components/popover",
+                    title: 'Card',
+                    href: "/docs/components/card",
                   },
                   {
                     title: 'Calendar',
@@ -50,6 +42,18 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                   {
                     title: 'DatePicker',
                     href: "/docs/components/datepicker",
+                  },
+                  {
+                    title: 'Popover',
+                    href: "/docs/components/popover",
+                  },
+                  {
+                    title: 'Tabs',
+                    href: "/docs/components/tabs",
+                  },
+                  {
+                    title: 'Toast',
+                    href: "/docs/components/toast",
                   },
                   {
                     title: 'ConfigProvider',
