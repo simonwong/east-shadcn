@@ -1,5 +1,14 @@
 # @easy-shadcn/react
 
+## 0.0.2
+
+### Patch Changes
+
+- c2a4fac: Add Card component
+- b52e64d: Export buttonVariants
+- 15f1a0a: Add DropdownMenu
+- 9b744f7: Button suport loading controlled, Optimize loading and prefix
+
 ## 0.0.1
 
 ### Patch Changes
