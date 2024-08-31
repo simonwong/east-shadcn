@@ -1,0 +1,44 @@
+---
+title: Button
+---
+
+## Usage
+
+```tsx
+import { DropdownMenu, Button } from "@easy-shadcn/react"
+
+<DropdownMenu
+  menu={[
+    {
+      name: 'Profile',
+      key: 'profile',
+      shortcut: '⇧⌘P',
+    },
+    {
+      separator: true,
+    },
+    [
+      {
+        name: 'Github',
+        key: 'github',
+      },
+      {
+        name: 'Support',
+        key: 'support',
+      },
+    ],
+  ]}
+>
+  <Button>Here</Button>
+</DropdownMenu>
+```
+
+## Examples
+
+### Structured data configuration
+
+<ExamplePreview name="dropdown-menu-demo" />
+
+## API
+
+TODO
