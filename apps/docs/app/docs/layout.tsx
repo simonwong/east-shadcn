@@ -44,6 +44,10 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                     href: "/docs/components/datepicker",
                   },
                   {
+                    title: 'DropdownMenu',
+                    href: "/docs/components/dropdown-menu",
+                  },
+                  {
                     title: 'Popover',
                     href: "/docs/components/popover",
                   },
