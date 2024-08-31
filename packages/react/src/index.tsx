@@ -7,3 +7,7 @@ export { Calendar, type CalendarProps } from "./calendar";
 export { DatePicker, type DatePickerProps } from "./datepicker";
 export * from "./modal";
 export { ConfigProvider, useConfigContext, type ConfigContextProps } from "./config-provider";
+
+
+// more
+export { buttonVariants } from '../components/ui/button'
