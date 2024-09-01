@@ -1,5 +1,15 @@
 # @easy-shadcn/react
 
+## 0.0.3
+
+### Patch Changes
+
+- [#6](https://github.com/simonwong/easy-shadcn/pull/6) [`d4fc786`](https://github.com/simonwong/easy-shadcn/commit/d4fc786ae90ab9c84acc2d4add92c9367b4953c3) Thanks [@simonwong](https://github.com/simonwong)! - refactor dropdown menu data structure
+
+- [#6](https://github.com/simonwong/easy-shadcn/pull/6) [`ac89dbc`](https://github.com/simonwong/easy-shadcn/commit/ac89dbca963ccb18b021a42c1ae83dfda939c805) Thanks [@simonwong](https://github.com/simonwong)! - Add Form and Input
+
+- [#6](https://github.com/simonwong/easy-shadcn/pull/6) [`dfa3a5f`](https://github.com/simonwong/easy-shadcn/commit/dfa3a5f62477d21bc40b694c353c92736c80d665) Thanks [@simonwong](https://github.com/simonwong)! - Add Toggle
+
 ## 0.0.2
 
 ### Patch Changes
