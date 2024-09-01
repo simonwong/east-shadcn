@@ -7,6 +7,8 @@ export { Calendar, type CalendarProps } from "./calendar";
 export { DatePicker, type DatePickerProps } from "./datepicker";
 export { DropdownMenu, type DropdownMenuProps } from "./dropdown-menu";
 export { Toggle, type ToggleProps } from "./toggle";
+export { Form, type FormProps, FormItem, type FormItemProps } from "./form";
+export { Input, type InputProps } from "./input";
 export * from "./modal";
 export { ConfigProvider, useConfigContext, type ConfigContextProps } from "./config-provider";
 
