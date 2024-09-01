@@ -5,24 +5,31 @@ import {
   DropdownMenuSeparator,
   DropdownMenuGroup,
   DropdownMenuItem,
+  DropdownMenuLabel,
   DropdownMenuShortcut,
+  DropdownMenuSub,
+  DropdownMenuSubTrigger,
+  DropdownMenuPortal,
+  DropdownMenuSubContent,
 } from '../../components/ui/dropdown-menu'
-import React, { PropsWithChildren, ReactNode } from 'react'
+import React, { ComponentProps, Fragment, PropsWithChildren, ReactNode } from 'react'
 
-type SeparatorItem = {
-  separator: boolean,
+interface GroupMenuItem extends ComponentProps<typeof DropdownMenuGroup> {
+  groupName?: ReactNode,
+  key?: string,
+  groupNameProps?: ComponentProps<typeof DropdownMenuLabel>
+  items: NormalMenuItem[]
 }
 
-type NormalMenuItem = {
+interface NormalMenuItem extends Omit<ComponentProps<typeof DropdownMenuItem>, 'children' | 'prefix'> {
+  prefix?: ReactNode,
   name: ReactNode,
   key?: string,
-  disabled?: boolean,
   shortcut?: string,
+  subItems?: MenuItem[]
 }
 
-type GroupMenuItem = (NormalMenuItem | SeparatorItem)[]
-
-type MenuItem = GroupMenuItem | NormalMenuItem | SeparatorItem
+type MenuItem = NormalMenuItem | GroupMenuItem
 
 export interface DropdownMenuProps {
   menu: MenuItem[]
@@ -33,23 +40,80 @@ export const DropdownMenu: React.FC<PropsWithChildren<DropdownMenuProps>> = ({
   menu,
   ...resetProps
 }) => {
-  const renderMenuItem = (menu: NormalMenuItem | SeparatorItem, idx: number) => {
-    if ('separator' in menu) {
-      return (<DropdownMenuSeparator key={idx} />)
+  const renderNormalItem = (item: NormalMenuItem, idx: number) => {
+    const { subItems, name, shortcut, prefix, key } = item
+    if (subItems) {
+      return renderSubItem(item, idx)
     }
     return (
-      <DropdownMenuItem key={idx || menu.key} {...menu}>
-        {menu.name}
-        {menu.shortcut && (<DropdownMenuShortcut>{menu.shortcut}</DropdownMenuShortcut>)}
+      <DropdownMenuItem key={key || idx} {...menu}>
+        {prefix && (<span className="mr-2">{prefix}</span>)}
+        {name}
+        {shortcut && (<DropdownMenuShortcut>{shortcut}</DropdownMenuShortcut>)}
       </DropdownMenuItem>
     )
   }
 
-  const renderGroupMenu = (groupMenu: GroupMenuItem, groupIdx: number) => (
-    <DropdownMenuGroup key={groupIdx}>
-      {groupMenu.map((menu, idx) => renderMenuItem(menu, idx))}
-    </DropdownMenuGroup>
-  )
+  const renderSubItem = (menu: NormalMenuItem, idx: number) => {
+    if (!menu.subItems || menu.subItems.length === 0) {
+      return null
+    }
+    return (
+      <DropdownMenuSub key={menu.key || idx}>
+        <DropdownMenuSubTrigger>{menu.name}</DropdownMenuSubTrigger>
+        <DropdownMenuPortal>
+          <DropdownMenuSubContent>
+            {renderMenuItem(menu.subItems)}
+          </DropdownMenuSubContent>
+        </DropdownMenuPortal>
+      </DropdownMenuSub>
+    )
+  }
+
+  const renderGroupItem = (group: GroupMenuItem, groupIdx: number, separatorConf: {
+    total: number,
+    nextIsGroup: boolean
+  }) => {
+    const { groupName, key, groupNameProps, items, ...resetProps } = group
+    return (
+      <Fragment key={key || groupIdx}>
+        {
+          groupIdx !== 0 && (
+            <DropdownMenuSeparator />
+          )
+        }
+        {groupName && (
+          <>
+            <DropdownMenuLabel {...groupNameProps}>{groupName}</DropdownMenuLabel>
+            <DropdownMenuSeparator />
+          </>
+        )}
+        <DropdownMenuGroup {...resetProps}>
+          {items.map((item, idx) => renderNormalItem(item, idx))}
+        </DropdownMenuGroup>
+        {
+          (separatorConf.nextIsGroup == false && separatorConf.total !== groupIdx + 1) && (
+            <DropdownMenuSeparator />
+          )
+        }
+      </Fragment>
+    )
+  }
+
+  const renderMenuItem = (menu: MenuItem[]) => {
+    return menu.map((item, idx) => {
+      if ('name' in item) {
+        return renderNormalItem(item, idx)
+      }
+      if ('items' in item) {
+        return renderGroupItem(item, idx, {
+          total: menu.length,
+          nextIsGroup: menu[idx+1] ? 'items' in menu[idx+1] : false,
+        })
+      }
+      return null
+    })
+  }
 
   return (
     <InternalDropdownMenu {...resetProps}>
@@ -57,14 +121,7 @@ export const DropdownMenu: React.FC<PropsWithChildren<DropdownMenuProps>> = ({
         {children}
       </DropdownMenuTrigger>
       <DropdownMenuContent className="w-56">
-        {
-          menu.map((item, idx) => {
-            if (Array.isArray(item)) {
-              return renderGroupMenu(item, idx)
-            }
-            return renderMenuItem(item, idx)
-          })
-        }
+        {renderMenuItem(menu)}
       </DropdownMenuContent>
     </InternalDropdownMenu>
   )

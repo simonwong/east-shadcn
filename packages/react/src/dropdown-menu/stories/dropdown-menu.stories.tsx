@@ -1,4 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
+import { GithubIcon, HandshakeIcon, SuperscriptIcon, Webhook } from 'lucide-react'
 import { DropdownMenu } from '../index';
 
 const meta = {
@@ -26,25 +27,26 @@ export const Default: Story = {
         shortcut: '⌘B',
       },
       {
-        separator: true,
-      },
-      [
-        {
-          name: 'Github',
-          key: 'github',
-        },
-        {
-          name: 'Support',
-          key: 'support',
-        },
-        {
-          name: 'API',
-          key: 'api',
-          disabled: true
-        },
-      ],
-      {
-        separator: true,
+        groupName: 'More',
+        key: 'more',
+        items: [
+          {
+            prefix: <GithubIcon style={{ width: '16px', height: '16px' }} />,
+            name: 'Github',
+            key: 'github',
+          },
+          {
+            prefix: <HandshakeIcon style={{ width: '16px', height: '16px' }} />,
+            name: 'Support',
+            key: 'support',
+          },
+          {
+            prefix: <Webhook style={{ width: '16px', height: '16px' }} />,
+            name: 'API',
+            key: 'api',
+            disabled: true
+          },
+        ],
       },
       {
         name: 'Log Out',
@@ -54,6 +56,115 @@ export const Default: Story = {
     ],
     children: (
       <div>Here</div>
+    )
+  },
+};
+
+export const AutoSeparator: Story = {
+  args: {
+    menu: [
+      {
+        groupName: 'Group1',
+        key: 'Group1',
+        items: [
+          {
+            name: 'Group1-item1',
+            key: 'Group1-item1',
+          },
+        ],
+      },
+      {
+        name: 'item2',
+        key: 'item2',
+        shortcut: '⇧⌘P',
+      },
+      {
+        groupName: 'Group2',
+        key: 'Group2',
+        items: [
+          {
+            name: 'Group2-item1',
+            key: 'Group2-item1',
+          },
+          {
+            name: 'Group2-item2',
+            key: 'Group2-item2',
+          },
+        ],
+      },
+      {
+        groupName: 'Group3',
+        key: 'Group3',
+        items: [
+          {
+            name: 'Group3-item1',
+            key: 'Group3-item1',
+          },
+          {
+            name: 'Group3-item2',
+            key: 'Group3-item2',
+          },
+        ],
+      },
+    ],
+    children: (
+      <div>AutoSeparator</div>
+    )
+  },
+};
+
+export const SubMenu: Story = {
+  args: {
+    menu: [
+      {
+        name: 'item1',
+        key: 'item1',
+      },
+      {
+        name: 'item2',
+        key: 'item2',
+        subItems: [
+          {
+            name: 'sub1-item1',
+            key: 'sub1-item1',
+          },
+          {
+            name: 'sub1-item2',
+            key: 'sub1-item2',
+            subItems: [
+              {
+                name: 'sub2-item1',
+                key: 'sub2-item1',
+              },
+              {
+                name: 'sub2-item2',
+                key: 'sub2-item2',
+              },
+              {
+                groupName: 'sub2-group',
+                key: 'sub2-group',
+                items: [
+                  {
+                    name: 'sub2-group-item1',
+                    key: 'sub2-group-item1',
+                  },
+                  {
+                    name: 'sub2-group-item2',
+                    key: 'sub2-group-item2',
+                  },
+                ]
+              },
+            ]
+          },
+        ]
+      },
+      {
+        name: 'item3',
+        key: 'item3',
+      },
+    ],
+    children: (
+      <div>SubMenu</div>
     )
   },
 };

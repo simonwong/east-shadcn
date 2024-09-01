@@ -15,25 +15,24 @@ const Demo = () => {
           shortcut: '⌘B',
         },
         {
-          separator: true,
-        },
-        [
-          {
-            name: 'Github',
-            key: 'github',
-          },
-          {
-            name: 'Support',
-            key: 'support',
-          },
-          {
-            name: 'API',
-            key: 'api',
-            disabled: true
-          },
-        ],
-        {
-          separator: true,
+          groupName: 'More',
+          key: 'more',
+          items: [
+            {
+              prefix: 'PREFIX',
+              name: 'Github',
+              key: 'github',
+            },
+            {
+              name: 'Support',
+              key: 'support',
+            },
+            {
+              name: 'API',
+              key: 'api',
+              disabled: true
+            },
+          ],
         },
         {
           name: 'Log Out',
