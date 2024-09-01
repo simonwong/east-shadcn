@@ -60,6 +60,10 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                     href: "/docs/components/toast",
                   },
                   {
+                    title: 'Toggle',
+                    href: "/docs/components/toggle",
+                  },
+                  {
                     title: 'ConfigProvider',
                     href: "/docs/components/config-provider",
                   },
