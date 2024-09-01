@@ -32,21 +32,23 @@ interface NormalMenuItem extends Omit<ComponentProps<typeof DropdownMenuItem>, '
 type MenuItem = NormalMenuItem | GroupMenuItem
 
 export interface DropdownMenuProps {
-  menu: MenuItem[]
+  menu: MenuItem[],
+  contentProps?: ComponentProps<typeof DropdownMenuContent>
 }
 
 export const DropdownMenu: React.FC<PropsWithChildren<DropdownMenuProps>> = ({
   children,
   menu,
+  contentProps,
   ...resetProps
 }) => {
   const renderNormalItem = (item: NormalMenuItem, idx: number) => {
-    const { subItems, name, shortcut, prefix, key } = item
+    const { subItems, name, shortcut, prefix, key, ...resetProps } = item
     if (subItems) {
       return renderSubItem(item, idx)
     }
     return (
-      <DropdownMenuItem key={key || idx} {...menu}>
+      <DropdownMenuItem key={key || idx} {...resetProps}>
         {prefix && (<span className="mr-2">{prefix}</span>)}
         {name}
         {shortcut && (<DropdownMenuShortcut>{shortcut}</DropdownMenuShortcut>)}
@@ -120,7 +122,7 @@ export const DropdownMenu: React.FC<PropsWithChildren<DropdownMenuProps>> = ({
       <DropdownMenuTrigger asChild>
         {children}
       </DropdownMenuTrigger>
-      <DropdownMenuContent className="w-56">
+      <DropdownMenuContent {...contentProps}>
         {renderMenuItem(menu)}
       </DropdownMenuContent>
     </InternalDropdownMenu>
