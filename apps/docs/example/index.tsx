@@ -272,7 +272,7 @@ const Demo = () => {
         },
       ]}
     >
-      <Button>Here</Button>
+      <Button>Deep Nested Sub Menu</Button>
     </DropdownMenu>
   )
 }
@@ -452,6 +452,62 @@ const Demo = () => {
       </Button>
       <Toaster richColors />
     </div>
+  )
+}
+
+export default Demo
+`
+  },
+
+  "toggle-controlled": {
+    component: React.lazy(() => import("./toggle-controlled")),
+    codeString: `import { Toggle } from "@easy-shadcn/react";
+import { useState } from "react";
+
+const Demo = () => {
+  const [value, setValue] = useState('first')
+  return (
+    <Toggle
+      type='single'
+      value={value}
+      onValueChange={setValue}
+      options={[
+        {
+          value: 'first',
+          label: "First"
+        },
+        {
+          value: 'second',
+          label: "Second"
+        },
+      ]}
+    />
+  )
+}
+
+export default Demo
+`
+  },
+
+  "toggle-demo": {
+    component: React.lazy(() => import("./toggle-demo")),
+    codeString: `import { Toggle } from "@easy-shadcn/react";
+
+const Demo = () => {
+  return (
+    <Toggle
+      type='single'
+      options={[
+        {
+          value: 'first',
+          label: "First"
+        },
+        {
+          value: 'second',
+          label: "Second"
+        },
+      ]}
+    />
   )
 }
 
