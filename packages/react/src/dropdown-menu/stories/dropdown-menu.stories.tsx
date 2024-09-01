@@ -20,11 +20,17 @@ export const Default: Story = {
         name: 'Profile',
         key: 'profile',
         shortcut: '⇧⌘P',
+        onClick: () => {
+          console.log('Profile')
+        }
       },
       {
         name: 'Billing',
         key: 'billing',
         shortcut: '⌘B',
+        onClick: () => {
+          console.log('Billing')
+        }
       },
       {
         groupName: 'More',
