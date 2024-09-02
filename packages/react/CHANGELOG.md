@@ -1,5 +1,11 @@
 # @easy-shadcn/react
 
+## 0.0.4
+
+### Patch Changes
+
+- [#8](https://github.com/simonwong/easy-shadcn/pull/8) [`6531a12`](https://github.com/simonwong/easy-shadcn/commit/6531a126387179a0f6fb5955f7eead297bc77077) Thanks [@simonwong](https://github.com/simonwong)! - Set dropdown menu item props, Add contentProps
+
 ## 0.0.3
 
 ### Patch Changes
