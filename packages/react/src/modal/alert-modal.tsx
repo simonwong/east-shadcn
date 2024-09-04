@@ -1,4 +1,4 @@
-import React, { ReactNode, useEffect, useState } from "react";
+import React, { ComponentProps, ReactNode, useEffect, useState } from "react";
 import { cn } from "@easy-shadcn/utils";
 import {
   AlertDialog,
@@ -14,24 +14,26 @@ import {
 import { Root } from "@radix-ui/react-alert-dialog"
 import { Button} from "../button";
 
-export interface AlertModalProps extends React.ComponentProps<typeof Root> {
-  trigger?: ReactNode;
+export interface AlertModalProps extends ComponentProps<typeof Root> {
   title?: ReactNode;
   content?: ReactNode;
+  contentProps?: ComponentProps<typeof AlertDialogContent>;
+  overlayProps?: ComponentProps<typeof AlertDialogOverlay>;
   cancelText?: ReactNode;
   onCancel?: () => void | Promise<void>;
-  cancelProps?: React.ComponentProps<typeof AlertDialogCancel>;
+  cancelProps?: ComponentProps<typeof AlertDialogCancel>;
   confirmText?: ReactNode;
   onConfirm?: () => void | Promise<void>;
-  confirmProps?: React.ComponentProps<typeof AlertDialogCancel>;
+  confirmProps?: ComponentProps<typeof AlertDialogCancel>;
   onClose?: () => void;
-  overlayProps?: React.ComponentProps<typeof AlertDialogOverlay>
 }
 
 export const AlertModal: React.FC<AlertModalProps> = ({
   title,
   content,
-  trigger,
+  contentProps,
+  overlayProps,
+  children,
   cancelText = 'Cancel',
   onCancel,
   cancelProps,
@@ -39,13 +41,12 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   onConfirm,
   confirmProps,
   onClose,
-  overlayProps,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
 
   useEffect(() => {
-    if (!trigger) {
+    if (!children) {
       setOpen(true)
     }
   }, []);
@@ -66,22 +67,19 @@ export const AlertModal: React.FC<AlertModalProps> = ({
       open={open}
       {...props}
     >
-      {
-        trigger && (
-          <AlertDialogTrigger asChild>
-            {trigger}
-          </AlertDialogTrigger>
-        )
-      }
+      {children && (<AlertDialogTrigger asChild>{children}</AlertDialogTrigger>)}
       <AlertDialogContent
         overlayProps={overlayProps}
+        {...contentProps}
       >
-        <AlertDialogHeader>
-          {title && <AlertDialogTitle>{title}</AlertDialogTitle>}
-          {content && (
-            <AlertDialogDescription>{content}</AlertDialogDescription>
-          )}
-        </AlertDialogHeader>
+        {
+          (title || content) && (
+            <AlertDialogHeader>
+              {title && <AlertDialogTitle>{title}</AlertDialogTitle>}
+              {content && (<AlertDialogDescription>{content}</AlertDialogDescription>)}
+            </AlertDialogHeader>
+          )
+        }
         <AlertDialogFooter>
           <Button
             variant="outline"
