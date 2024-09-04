@@ -1,5 +1,16 @@
 # @easy-shadcn/react
 
+## 0.0.5
+
+### Patch Changes
+
+- [#10](https://github.com/simonwong/easy-shadcn/pull/10) [`3f1a3ff`](https://github.com/simonwong/easy-shadcn/commit/3f1a3ff9477482e437a3e9e7c13ffe51b663e3e5) Thanks [@simonwong](https://github.com/simonwong)! - Set moduleResolution to "Bundler"
+
+- [#10](https://github.com/simonwong/easy-shadcn/pull/10) [`aee2e0c`](https://github.com/simonwong/easy-shadcn/commit/aee2e0ca9222cb74c9612bbe46e5fc6e84d2f2b5) Thanks [@simonwong](https://github.com/simonwong)! - Add Modal
+
+- Updated dependencies [[`3f1a3ff`](https://github.com/simonwong/easy-shadcn/commit/3f1a3ff9477482e437a3e9e7c13ffe51b663e3e5)]:
+  - @easy-shadcn/utils@0.0.2
+
 ## 0.0.4
 
 ### Patch Changes
