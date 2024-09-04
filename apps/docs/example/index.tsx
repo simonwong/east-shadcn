@@ -470,7 +470,11 @@ const Demo = () => {
     <Toggle
       type='single'
       value={value}
-      onValueChange={setValue}
+      onValueChange={(val) => {
+        if (val) {
+          setValue(val)
+        }
+      }}
       options={[
         {
           value: 'first',

@@ -6,6 +6,7 @@
     "docs:dev": "turbo dev --filter=@easy-shadcn/docs --filter={./packages/*}",
     "build": "turbo build",
     "build:package": "turbo build --filter={./packages/*}",
+    "build:docs": "turbo build --filter=@easy-shadcn/docs --filter={./packages/*}",
     "lint": "turbo lint",
     "clean": "turbo clean && rimraf .turbo",
     "ci:version": "changeset version",
