@@ -3,9 +3,8 @@ import animate from "tailwindcss-animate"
 
 const config: Config = {
   content: [
-    "./index.html",
     '../../packages/react/**/*.{js,ts,jsx,tsx}',
-    '../../packages/react/**/*.stories.(js,jsx,ts,tsx)',
+    '../../packages/react/src/**/stories/*.stories.(js,jsx,ts,tsx)',
   ],
   darkMode: ['class'],
   theme: {
