@@ -1,5 +1,11 @@
 # @easy-shadcn/react
 
+## 0.0.6
+
+### Patch Changes
+
+- [#12](https://github.com/simonwong/easy-shadcn/pull/12) [`fa0d76e`](https://github.com/simonwong/easy-shadcn/commit/fa0d76e70439edcac69969dc0a6e68285f7895cf) Thanks [@simonwong](https://github.com/simonwong)! - Add switch
+
 ## 0.0.5
 
 ### Patch Changes
