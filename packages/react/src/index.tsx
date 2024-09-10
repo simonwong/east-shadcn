@@ -10,6 +10,7 @@ export { Toggle, type ToggleProps } from "./toggle";
 export { Form, type FormProps, FormItem, type FormItemProps } from "./form";
 export { Input, type InputProps } from "./input";
 export { Switch, type SwitchProps } from "./switch";
+export { Tooltip, TooltipProvider, type TooltipProps } from "./tooltip";
 export * from "./modal";
 export { ConfigProvider, useConfigContext, type ConfigContextProps } from "./config-provider";
 
