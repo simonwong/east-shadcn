@@ -1,5 +1,5 @@
 import type { Meta, StoryObj } from '@storybook/react';
-import { GithubIcon, HandshakeIcon, SuperscriptIcon, Webhook } from 'lucide-react'
+import { GithubIcon, HandshakeIcon, Webhook } from 'lucide-react'
 import { DropdownMenu } from '../index';
 
 const meta = {
