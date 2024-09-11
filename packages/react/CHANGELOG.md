@@ -1,5 +1,11 @@
 # @easy-shadcn/react
 
+## 0.0.7
+
+### Patch Changes
+
+- [#14](https://github.com/simonwong/easy-shadcn/pull/14) [`9a348a3`](https://github.com/simonwong/easy-shadcn/commit/9a348a3c05735a7315694570f4878243205a7f55) Thanks [@simonwong](https://github.com/simonwong)! - Add tooltip
+
 ## 0.0.6
 
 ### Patch Changes
