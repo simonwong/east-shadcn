@@ -1,10 +1,22 @@
+import { allDocs } from "contentlayer/generated"
 import { DocsSidebarNav } from "@/components/sidebar-nav"
 
 interface DocsLayoutProps {
   children: React.ReactNode
 }
 
-export default function DocsLayout({ children }: DocsLayoutProps) {
+async function getComponentMenuItems() {
+  return allDocs
+    .filter(item => item.slugAsParams.startsWith('components/'))
+    .map(item => ({
+      title: item.title,
+      href: `/docs/${item.slugAsParams}`
+    }))
+}
+
+export default async function DocsLayout({ children }: DocsLayoutProps) {
+  const componentMenuItems = await getComponentMenuItems()
+
   return (
     <div className="container flex-1 items-start md:grid md:grid-cols-[220px_minmax(0,1fr)] md:gap-6 lg:grid-cols-[240px_minmax(0,1fr)] lg:gap-10">
       <aside className="w-full h-full">
@@ -26,56 +38,7 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
               },
               {
                 title: 'Components',
-                items: [
-                  {
-                    title: 'Button',
-                    href: "/docs/components/button",
-                  },
-                  {
-                    title: 'Card',
-                    href: "/docs/components/card",
-                  },
-                  {
-                    title: 'Calendar',
-                    href: "/docs/components/calendar",
-                  },
-                  {
-                    title: 'DatePicker',
-                    href: "/docs/components/datepicker",
-                  },
-                  {
-                    title: 'DropdownMenu',
-                    href: "/docs/components/dropdown-menu",
-                  },
-                  {
-                    title: 'Modal',
-                    href: "/docs/components/modal",
-                  },
-                  {
-                    title: 'Popover',
-                    href: "/docs/components/popover",
-                  },
-                  {
-                    title: 'Tabs',
-                    href: "/docs/components/tabs",
-                  },
-                  {
-                    title: 'Toast',
-                    href: "/docs/components/toast",
-                  },
-                  {
-                    title: 'Tooltip',
-                    href: "/docs/components/tooltip",
-                  },
-                  {
-                    title: 'Toggle',
-                    href: "/docs/components/toggle",
-                  },
-                  {
-                    title: 'ConfigProvider',
-                    href: "/docs/components/config-provider",
-                  },
-                ]
+                items: componentMenuItems
               },
             ]}
           />
