@@ -48,6 +48,10 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                     href: "/docs/components/dropdown-menu",
                   },
                   {
+                    title: 'Modal',
+                    href: "/docs/components/modal",
+                  },
+                  {
                     title: 'Popover',
                     href: "/docs/components/popover",
                   },
@@ -58,6 +62,10 @@ export default function DocsLayout({ children }: DocsLayoutProps) {
                   {
                     title: 'Toast',
                     href: "/docs/components/toast",
+                  },
+                  {
+                    title: 'Tooltip',
+                    href: "/docs/components/tooltip",
                   },
                   {
                     title: 'Toggle',

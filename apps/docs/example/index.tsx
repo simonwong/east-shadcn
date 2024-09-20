@@ -3,6 +3,54 @@
 import React from "react";
 
 export default {
+  "alert-modal-action": {
+    component: React.lazy(() => import("./alert-modal-action")),
+    codeString: `import { Button, alertModalAction } from '@easy-shadcn/react'
+
+const Demo = () => {
+  return (
+    <Button
+      onClick={() => {
+        alertModalAction.confirm({
+          title: 'Tips',
+          content: 'If onConfirm or onCancel is asynchronous events, the button will automatically display loading',
+          onCancel: () => {
+            console.log('cancel')
+          },
+          onConfirm: () => new Promise((resolve) => {
+            setTimeout(() => {
+              console.log('confirm')
+              resolve()
+            }, 1000)
+          })
+        })
+      }}
+    >
+      Click Confirm
+    </Button>
+  )
+}
+
+export default Demo
+`
+  },
+
+  "alert-modal-host": {
+    component: React.lazy(() => import("./alert-modal-host")),
+    codeString: `import { AlertModalHost } from '@easy-shadcn/react'
+
+const App = () => {
+  return (
+    <div>
+      <AlertModalHost />
+    </div>
+  )
+}
+
+export default App
+`
+  },
+
   "button-async-action": {
     component: React.lazy(() => import("./button-async-action")),
     codeString: `import { Button } from "@easy-shadcn/react"
@@ -281,6 +329,86 @@ export default Demo
 `
   },
 
+  "modal-demo": {
+    component: React.lazy(() => import("./modal-demo")),
+    codeString: `import { Button, Modal } from '@easy-shadcn/react'
+
+const Demo = () => {
+  return (
+    <div>
+      <Modal
+        title="Modal Title"
+        content={(
+          <div>
+            <div>Modal Content</div>
+            <div>Modal Content</div>
+            <div>Modal Content</div>
+            <div>Modal Content</div>
+          </div>
+        )}
+        footer={(
+          <div>
+            <Button variant="default">
+              Cancel
+            </Button>
+            <Button>
+              Save
+            </Button>
+          </div>
+        )}
+      >
+        <Button>Click Show Modal</Button>
+      </Modal>
+    </div>
+  )
+}
+
+export default Demo
+`
+  },
+
+  "modal-hooks-demo": {
+    component: React.lazy(() => import("./modal-hooks-demo")),
+    codeString: `import { Button, Modal, useModal } from '@easy-shadcn/react'
+
+const AnyModalContent = () => (
+  <div>
+    AnyModalContent
+  </div>
+)
+
+const Demo = () => {
+  const [modalHost, modalAction] = useModal()
+
+  return (
+    <div>
+      <Button
+        onClick={() => {
+          modalAction.open({
+            title: 'Modal Open By hooks action',
+            content: <AnyModalContent />,
+            footer: (
+              <div>
+                <Button variant="default">
+                  Cancel
+                </Button>
+                <Button>
+                  Save
+                </Button>
+              </div>
+            ),
+          })
+        }}
+      >Click Show Modal</Button>
+      {modalHost}
+    </div>
+  )
+}
+
+export default Demo
+`
+  },
+
   "popover-demo": {
     component: React.lazy(() => import("./popover-demo")),
     codeString: `import { Popover, Button } from "@easy-shadcn/react";
@@ -512,6 +640,24 @@ const Demo = () => {
         },
       ]}
     />
+  )
+}
+
+export default Demo
+`
+  },
+
+  "tooltip-demo": {
+    component: React.lazy(() => import("./tooltip-demo")),
+    codeString: `import { Button, Tooltip } from "@easy-shadcn/react";
+
+const Demo = () => {
+  return (
+    <Tooltip
+      content="This is a tooltip"
+    >
+      <Button>Hover Here</Button>
+    </Tooltip>
   )
 }
 
