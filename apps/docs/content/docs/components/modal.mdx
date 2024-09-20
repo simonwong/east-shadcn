@@ -1,0 +1,59 @@
+---
+title: Modal
+---
+
+## Alert Modal Usage
+
+Add AlertModalHost to APP root
+
+```tsx
+import { AlertModalHost } from "@easy-shadcn/react"
+
+const App = () => {
+  <div>
+    {/* Other */}
+    {AlertModalHost}
+  </div>
+}
+```
+
+```tsx
+import { alertModalAction } from "@easy-shadcn/react"
+
+alertModalAction.confirm({
+  title: 'Tips',
+  content: 'Hi here',
+  onCancel: () => {
+    console.log('cancel')
+  },
+  onConfirm: () => {
+    console.log('confirm')
+  })
+})
+```
+
+## Modal Usage
+
+## Examples
+
+### Alert Modal Action
+
+Add Host to App
+
+<ExamplePreview name="alert-modal-host" />
+
+Use Alert Action
+
+<ExamplePreview name="alert-modal-action" />
+
+### Modal
+
+<ExamplePreview name="modal-demo" />
+
+### Use Modal With Hooks
+
+<ExamplePreview name="modal-hooks-demo" />
+
+## API
+
+TODO
