@@ -332,11 +332,16 @@ export default Demo
   "modal-demo": {
     component: React.lazy(() => import("./modal-demo")),
     codeString: `import { Button, Modal } from '@easy-shadcn/react'
+import { useState } from 'react'
 
 const Demo = () => {
+  const [showModal, setShowModal] = useState(false)
+
   return (
     <div>
       <Modal
+        open={showModal}
+        onOpenChange={setShowModal}
         title="Modal Title"
         content={(
           <div>
@@ -347,8 +352,13 @@ const Demo = () => {
           </div>
         )}
         footer={(
-          <div>
-            <Button variant="default">
+          <div className='space-x-2'>
+            <Button
+              variant="ghost"
+              onClick={() => {
+                setShowModal(false)
+              }}
+            >
               Cancel
             </Button>
             <Button>
@@ -380,26 +390,31 @@ const AnyModalContent = () => (
 const Demo = () => {
   const [modalHost, modalAction] = useModal()
 
+  const handleClick = () => {
+    modalAction.open({
+      title: 'Modal Open By hooks action',
+      content: <AnyModalContent />,
+      footer: (
+        <div className='space-x-2'>
+          <Button
+            variant="ghost"
+            onClick={() => {
+              modalAction.close()
+            }}
+          >
+            Cancel
+          </Button>
+          <Button>
+            Save
+          </Button>
+        </div>
+      ),
+    })
+  }
+
   return (
     <div>
-      <Button
-        onClick={() => {
-          modalAction.open({
-            title: 'Modal Open By hooks action',
-            content: <AnyModalContent />,
-            footer: (
-              <div>
-                <Button variant="default">
-                  Cancel
-                </Button>
-                <Button>
-                  Save
-                </Button>
-              </div>
-            ),
-          })
-        }}
-      >Click Show Modal</Button>
+      <Button onClick={handleClick}>Click Show Modal</Button>
       {modalHost}
     </div>
   )
