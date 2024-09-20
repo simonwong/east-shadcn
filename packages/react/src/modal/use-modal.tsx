@@ -1,7 +1,6 @@
 import { useState } from 'react'
 import { Modal, type ModalProps } from './modal'
 
-
 export const useModal = () => {
   const [open, setOpen] = useState(false)
   const [modalProps, setModalProp] = useState<ModalProps>({})
