@@ -1,5 +1,13 @@
 # @easy-shadcn/react
 
+## 0.0.8
+
+### Patch Changes
+
+- [#16](https://github.com/simonwong/easy-shadcn/pull/16) [`88ad0bd`](https://github.com/simonwong/easy-shadcn/commit/88ad0bd08f4981d6221225af18675864c7c965aa) Thanks [@simonwong](https://github.com/simonwong)! - Tooltip set delayDuration to 300 by default. set Content style by default.
+
+- [#16](https://github.com/simonwong/easy-shadcn/pull/16) [`980654c`](https://github.com/simonwong/easy-shadcn/commit/980654c679d36bb48c3a4961cb104912cb940970) Thanks [@simonwong](https://github.com/simonwong)! - Export useModal
+
 ## 0.0.7
 
 ### Patch Changes
