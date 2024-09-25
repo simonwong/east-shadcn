@@ -1,5 +1,13 @@
 # @easy-shadcn/react
 
+## 0.0.9
+
+### Patch Changes
+
+- [#18](https://github.com/simonwong/easy-shadcn/pull/18) [`dc67568`](https://github.com/simonwong/easy-shadcn/commit/dc675682403ad9c5d5abb356bc56d096c8d8feae) Thanks [@simonwong](https://github.com/simonwong)! - Refactor modal action, support open Modal and AlertModal by modalAction
+
+- [#18](https://github.com/simonwong/easy-shadcn/pull/18) [`556ca8b`](https://github.com/simonwong/easy-shadcn/commit/556ca8b05229352212217015c3987c0e1046c004) Thanks [@simonwong](https://github.com/simonwong)! - Form add default onSubmit event with preventDefault
+
 ## 0.0.8
 
 ### Patch Changes
