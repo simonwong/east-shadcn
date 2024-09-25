@@ -35,22 +35,6 @@ export default Demo
 `
   },
 
-  "alert-modal-host": {
-    component: React.lazy(() => import("./alert-modal-host")),
-    codeString: `import { AlertModalHost } from '@easy-shadcn/react'
-
-const App = () => {
-  return (
-    <div>
-      <AlertModalHost />
-    </div>
-  )
-}
-
-export default App
-`
-  },
-
   "button-async-action": {
     component: React.lazy(() => import("./button-async-action")),
     codeString: `import { Button } from "@easy-shadcn/react"
@@ -329,6 +313,30 @@ export default Demo
 `
   },
 
+  "modal-action": {
+    component: React.lazy(() => import("./modal-action")),
+    codeString: `import { Button, modalAction } from '@easy-shadcn/react'
+
+const Demo = () => {
+  return (
+    <Button
+      onClick={() => {
+        modalAction.open({
+          title: 'title',
+          content: 'Modal Content',
+          footer: 'Modal Footer'
+        })
+      }}
+    >
+      Click Open Modal
+    </Button>
+  )
+}
+
+export default Demo
+`
+  },
+
   "modal-demo": {
     component: React.lazy(() => import("./modal-demo")),
     codeString: `import { Button, Modal } from '@easy-shadcn/react'
@@ -377,9 +385,76 @@ export default Demo
 `
   },
 
+  "modal-form-action": {
+    component: React.lazy(() => import("./modal-form-action")),
+    codeString: `import { Button, Form, FormItem, Input, modalAction } from '@easy-shadcn/react'
+
+const Demo = () => {
+  const form = Form.useForm({
+    defaultValues: {
+      username: "",
+      remark: "",
+    },
+  })
+
+  return (
+    <Button
+      onClick={() => {
+        const modal = modalAction.open({
+          title: 'Form Title',
+          content: (
+            <Form form={form} className='space-y-4'>
+              <FormItem
+                control={form.control}
+                name="username"
+                label="User Name"
+                render={({ field }) => (
+                  <Input placeholder="shadcn" {...field} />
+                )}
+              />
+              <FormItem
+                control={form.control}
+                name="remark"
+                label="Remark"
+                render={({ field }) => (
+                  <Input placeholder="shadcn" {...field} />
+                )}
+              />
+            </Form>
+          ),
+          footer: (
+            <div>
+              <Button
+                onClick={
+                  form.handleSubmit((data) => {
+                    modalAction.confirm({
+                      title: '是否确认提交',
+                      content: '提交后关闭表单弹窗',
+                      onConfirm: () => {
+                        console.log('data', data)
+                        modal.close()
+                      }
+                    })
+                  })
+                }
+              >Confirm</Button>
+            </div>
+          )
+        })
+      }}
+    >
+      Click Open Modal Form
+    </Button>
+  )
+}
+
+export default Demo
+`
+  },
+
   "modal-hooks-demo": {
     component: React.lazy(() => import("./modal-hooks-demo")),
-    codeString: `import { Button, Modal, useModal } from '@easy-shadcn/react'
+    codeString: `import { Button, useModal } from '@easy-shadcn/react'
 
 const AnyModalContent = () => (
   <div>
@@ -421,6 +496,22 @@ const Demo = () => {
 }
 
 export default Demo
+`
+  },
+
+  "modal-host": {
+    component: React.lazy(() => import("./modal-host")),
+    codeString: `import { ModalHost } from '@easy-shadcn/react'
+
+const App = () => {
+  return (
+    <div>
+      <ModalHost />
+    </div>
+  )
+}
+
+export default App
 `
   },
 
