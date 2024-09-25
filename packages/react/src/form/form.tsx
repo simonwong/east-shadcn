@@ -13,7 +13,7 @@ export type FormFC = <TFieldValues extends FieldValues, TContext = any, TTransfo
 export const Form: FormFC = ({ form, children, ...props }) => {
   return (
     <InternalForm {...form}>
-      <form {...props}>
+      <form {...props} onSubmit={props.onSubmit || ((e) => e.preventDefault())} >
         {children}
       </form>
     </InternalForm>
