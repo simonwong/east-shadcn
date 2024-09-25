@@ -2,25 +2,45 @@
 title: Modal
 ---
 
-## Alert Modal Usage
-
-Add AlertModalHost to APP root
+## Modal Usage
 
 ```tsx
-import { AlertModalHost } from "@easy-shadcn/react"
+import { Modal } from "@easy-shadcn/react"
+
+<Modal
+  title='Modal title'
+  description='Modal description'
+  content={(
+    <div>
+      <div>Modal Content1</div>
+      <div>Modal Content2</div>
+      <div>Modal Content3</div>
+    </div>
+  )}
+>
+  <Button>Click Open</Button>
+</Modal>
+```
+
+## Modal Action Usage
+
+Add ModalHost to APP root
+
+```tsx
+import { ModalHost } from "@easy-shadcn/react"
 
 const App = () => {
   <div>
     {/* Other */}
-    {AlertModalHost}
+    {ModalHost}
   </div>
 }
 ```
 
 ```tsx
-import { alertModalAction } from "@easy-shadcn/react"
+import { modalAction } from "@easy-shadcn/react"
 
-alertModalAction.confirm({
+modalAction.confirm({
   title: 'Tips',
   content: 'Hi here',
   onCancel: () => {
@@ -30,25 +50,37 @@ alertModalAction.confirm({
     console.log('confirm')
   })
 })
-```
 
-## Modal Usage
+modalAction.open({
+  title: 'title',
+  content: 'Modal Content',
+  footer: 'Modal Footer'
+})
+```
 
 ## Examples
 
-### Alert Modal Action
+### Modal
+
+<ExamplePreview name="modal-demo" />
+
+### Modal Action
 
 Add Host to App
 
-<ExamplePreview name="alert-modal-host" />
+<ExamplePreview name="modal-host" />
 
 Use Alert Action
 
 <ExamplePreview name="alert-modal-action" />
 
-### Modal
+Use Modal Action
 
-<ExamplePreview name="modal-demo" />
+<ExamplePreview name="modal-action" />
+
+Modal Form Action
+
+<ExamplePreview name="modal-form-action" />
 
 ### Use Modal With Hooks
 

@@ -1,4 +1,4 @@
-import { Button, Modal, useModal } from '@easy-shadcn/react'
+import { Button, useModal } from '@easy-shadcn/react'
 
 const AnyModalContent = () => (
   <div>

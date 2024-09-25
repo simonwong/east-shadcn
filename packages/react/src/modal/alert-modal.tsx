@@ -1,4 +1,4 @@
-import React, { ComponentProps, ReactNode, useEffect, useState } from "react";
+import React, { ComponentProps, ReactNode, useState } from "react";
 import { cn } from "@easy-shadcn/utils";
 import {
   AlertDialog,
@@ -41,15 +41,10 @@ export const AlertModal: React.FC<AlertModalProps> = ({
   onConfirm,
   confirmProps,
   onClose,
+  onOpenChange,
   ...props
 }) => {
   const [open, setOpen] = useState(false);
-
-  useEffect(() => {
-    if (!children) {
-      setOpen(true)
-    }
-  }, []);
 
   const handleClose = () => {
     setOpen(false);
@@ -60,6 +55,7 @@ export const AlertModal: React.FC<AlertModalProps> = ({
     <AlertDialog
       onOpenChange={(op) => {
         setOpen(op);
+        onOpenChange?.(op)
         if (op === false) {
           handleClose();
         }

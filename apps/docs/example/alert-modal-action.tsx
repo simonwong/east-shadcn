@@ -1,10 +1,10 @@
-import { Button, alertModalAction } from '@easy-shadcn/react'
+import { Button, modalAction } from '@easy-shadcn/react'
 
 const Demo = () => {
   return (
     <Button
       onClick={() => {
-        alertModalAction.confirm({
+        modalAction.confirm({
           title: 'Tips',
           content: 'If onConfirm or onCancel is asynchronous events, the button will automatically display loading',
           onCancel: () => {

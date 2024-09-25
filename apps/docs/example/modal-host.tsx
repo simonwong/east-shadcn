@@ -1,9 +1,9 @@
-import { AlertModalHost } from '@easy-shadcn/react'
+import { ModalHost } from '@easy-shadcn/react'
 
 const App = () => {
   return (
     <div>
-      <AlertModalHost />
+      <ModalHost />
     </div>
   )
 }

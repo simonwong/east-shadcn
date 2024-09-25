@@ -17,7 +17,7 @@ export const Default: Story = {
   args: {
     children: <Button>Click Open</Button>,
     title: '提示',
-    content: '如果没有 children, 就会自动打开',
+    content: '点击打开，异步事件自动 loading',
     onConfirm: () => new Promise((resolve) => {
       setTimeout(() => {
         resolve()
