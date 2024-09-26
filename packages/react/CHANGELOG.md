@@ -1,5 +1,11 @@
 # @easy-shadcn/react
 
+## 0.0.11
+
+### Patch Changes
+
+- [#22](https://github.com/simonwong/easy-shadcn/pull/22) [`049821a`](https://github.com/simonwong/easy-shadcn/commit/049821afa37424f01034af828567d457ba051826) Thanks [@simonwong](https://github.com/simonwong)! - export use modal action
+
 ## 0.0.10
 
 ### Patch Changes
