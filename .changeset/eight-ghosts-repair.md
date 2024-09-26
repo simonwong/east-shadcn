@@ -2,4 +2,4 @@
 "@easy-shadcn/react": patch
 ---
 
-useModalAction return modal action
+useModalAction return modal action ref

@@ -88,8 +88,6 @@ export const ModalHost = () => {
     }
   }, [])
 
-  console.log('modals', modals)
-
   return (
     <>
       {modals.map(({ id, type, props }) => {
