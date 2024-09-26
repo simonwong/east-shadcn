@@ -5,6 +5,7 @@ import { ActionModalProps, ActionModalType } from "./types";
 
 export enum SubscribeType {
   Add,
+  Update,
   Delete,
 }
 type SubscriberFn = (state: ActionModalProps, type: SubscribeType) => void
@@ -42,6 +43,15 @@ class Observer {
       actionData,
       close: () => {
         this.#publish(actionData, SubscribeType.Delete)
+      },
+      update: (updateData: AlertModalProps) => {
+        this.#publish({
+          ...actionData,
+          props: {
+            ...data,
+            ...updateData,
+          },
+        }, SubscribeType.Update)
       }
     }
   };
@@ -58,6 +68,12 @@ class Observer {
       actionData,
       close: () => {
         this.#publish(actionData, SubscribeType.Delete)
+      },
+      update: (updateData: ModalProps) => {
+        this.#publish({
+          ...actionData,
+          props: updateData,
+        }, SubscribeType.Update)
       }
     }
   };
