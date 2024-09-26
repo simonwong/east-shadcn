@@ -5,16 +5,14 @@ import { AlertModalProps } from "./alert-modal"
 
 
 export const useModalAction = (props: ModalProps | AlertModalProps, dependencies: any[] = []) => {
-  const modalRef = useRef<{
-    modalInstance: ReturnType<typeof modalAction.open> | ReturnType<typeof modalAction.alert> | ReturnType<typeof modalAction.confirm>,
-    initProps?: ModalProps | AlertModalProps
-  } | null>(null)
+  const modalInstanceRef = useRef<ReturnType<typeof modalAction.open> | ReturnType<typeof modalAction.alert> | ReturnType<typeof modalAction.confirm> | null>(null)
+  const modalPropsRef = useRef<ModalProps | AlertModalProps | null | undefined>(null)
 
   useEffect(() => {
-    if (modalRef.current) {
+    if (modalInstanceRef.current) {
       // props priority
-      modalRef.current.modalInstance.update({
-        ...modalRef.current.initProps,
+      modalInstanceRef.current.update({
+        ...modalPropsRef.current,
         ...props
       })
     }
@@ -27,10 +25,8 @@ export const useModalAction = (props: ModalProps | AlertModalProps, dependencies
         ...props,
         ...modalProps,
       })
-      modalRef.current = {
-        modalInstance: modalIns,
-        initProps: modalProps
-      }
+      modalInstanceRef.current = modalIns
+      modalPropsRef.current = modalProps
       return modalIns
     },
     alert: (modalProps?: AlertModalProps) => {
@@ -38,10 +34,8 @@ export const useModalAction = (props: ModalProps | AlertModalProps, dependencies
         ...props,
         ...modalProps,
       })
-      modalRef.current = {
-        modalInstance: modalIns,
-        initProps: modalProps
-      }
+      modalInstanceRef.current = modalIns
+      modalPropsRef.current = modalProps
       return modalIns
     },
     confirm: (modalProps?: AlertModalProps) => {
@@ -49,16 +43,14 @@ export const useModalAction = (props: ModalProps | AlertModalProps, dependencies
         ...props,
         ...modalProps,
       })
-      modalRef.current = {
-        modalInstance: modalIns,
-        initProps: modalProps
-      }
+      modalInstanceRef.current = modalIns
+      modalPropsRef.current = modalProps
       return modalIns
     },
   }
 
   return [
     hookModalAction,
-    modalRef.current?.modalInstance,
+    modalInstanceRef,
   ] as const
 }
