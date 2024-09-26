@@ -61,5 +61,6 @@ export const useModalAction = (props: ModalProps | AlertModalProps, dependencies
 
   return [
     hookModalAction,
-  ]
+    modalRef.current,
+  ] as const
 }
