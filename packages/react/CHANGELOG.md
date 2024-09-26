@@ -1,5 +1,13 @@
 # @easy-shadcn/react
 
+## 0.0.10
+
+### Patch Changes
+
+- [#20](https://github.com/simonwong/easy-shadcn/pull/20) [`b947a70`](https://github.com/simonwong/easy-shadcn/commit/b947a707a2644ace5e88481bba0f6d54914a90c4) Thanks [@simonwong](https://github.com/simonwong)! - modal action support update modal props
+
+- [#20](https://github.com/simonwong/easy-shadcn/pull/20) [`792ca0e`](https://github.com/simonwong/easy-shadcn/commit/792ca0ecf7ba10d3a30b21429cc9d2c44257b10d) Thanks [@simonwong](https://github.com/simonwong)! - add useModalAction for update modal props
+
 ## 0.0.9
 
 ### Patch Changes
