@@ -38,6 +38,10 @@ export const ModalHost = () => {
           if (item.id === item.id) {
             return {
               ...modal,
+              props: {
+                ...item.props,
+                ...modal.props,
+              }
             }
           }
           return item
@@ -57,7 +61,7 @@ export const ModalHost = () => {
   useEffect(() => {
     const unsubscribe = AlertModalActionState.subscribe((modal, type) => {
       // Add or Update
-      if (type === SubscribeType.Add) {
+      if (type === SubscribeType.Add || type === SubscribeType.Update) {
         addModal(modal)
       } else {
         removeModal(modal.id)
