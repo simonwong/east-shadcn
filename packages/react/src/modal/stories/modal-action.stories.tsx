@@ -5,7 +5,8 @@ import { Input } from '../../input';
 import { Form, FormItem } from '../../form';
 import { z } from 'zod';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { useEffect, useRef, useState } from 'react';
+import { useState } from 'react';
+import { useModalAction } from '../use-modal-action';
 
 const meta = {
   title: 'Components/modal/modalAction',
@@ -165,41 +166,33 @@ export const Modal: Story = {
 
 export const UpdateModal: Story = {
   render: () => {
-    let modalRef = useRef<ReturnType<typeof modalAction.open> | null>(null)
     const [times, setTimes] = useState(1)
-
-    useEffect(() => {
-      if (modalRef.current) {
-        modalRef.current?.update({
-          content: `Confirm Times: ${times}`,
-        })
-      }
+    const [hookModalAction] = useModalAction({
+      title: 'Modal Title',
+      content: `Confirm Times: ${times}`,
+      footer: (
+        <div>
+          <Button
+            onClick={() => setTimes(t => t + 1)}
+          >Confirm</Button>
+        </div>
+      )
     }, [times])
 
     return (
-      <Button
-        onClick={() => {
-          const modal = modalAction.open({
-            title: 'Modal Title',
-            content: `Confirm Times: ${times}`,
-            footer: (
-              <div>
-                <Button
-                  onClick={() => setTimes(t => t + 1)}
-                >Confirm</Button>
-              </div>
-            ),
-            onOpenChange: (op) => {
-              if (op === false) {
-                modalRef.current = null
-              }
-            }
-          })
-          modalRef.current = modal
-        }}
-      >
-        Click Oen Modal
-      </Button>
+      <>
+        <div>Times: {times}</div>
+        <Button
+          onClick={() => {
+            hookModalAction.open({})
+          }}
+        >
+          Click Oen Modal
+        </Button>
+        <Button onClick={() => setTimes(t => t + 1)}>
+          Add Times
+        </Button>
+      </>
     )
   },
   args: {
