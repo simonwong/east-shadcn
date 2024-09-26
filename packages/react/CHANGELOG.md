@@ -1,5 +1,11 @@
 # @easy-shadcn/react
 
+## 0.0.12
+
+### Patch Changes
+
+- [#24](https://github.com/simonwong/easy-shadcn/pull/24) [`52d3386`](https://github.com/simonwong/easy-shadcn/commit/52d33869134ccd43a6ed3d063ab5efbe66b2a5db) Thanks [@simonwong](https://github.com/simonwong)! - useModalAction add action instance
+
 ## 0.0.11
 
 ### Patch Changes
