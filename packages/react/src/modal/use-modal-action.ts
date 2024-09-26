@@ -6,9 +6,7 @@ import { AlertModalProps } from "./alert-modal"
 
 export const useModalAction = (props: ModalProps | AlertModalProps, dependencies: any[] = []) => {
   const modalRef = useRef<{
-    modalInstance: {
-      update: (props: ModalProps | AlertModalProps) => void
-    },
+    modalInstance: ReturnType<typeof modalAction.open> | ReturnType<typeof modalAction.alert> | ReturnType<typeof modalAction.confirm>,
     initProps?: ModalProps | AlertModalProps
   } | null>(null)
 
@@ -23,7 +21,7 @@ export const useModalAction = (props: ModalProps | AlertModalProps, dependencies
   }, dependencies)
 
   // modalProps priority
-  const hookModalAction: typeof modalAction = {
+  const hookModalAction = {
     open: (modalProps?: ModalProps) => {
       const modalIns = modalAction.open({
         ...props,
@@ -61,6 +59,6 @@ export const useModalAction = (props: ModalProps | AlertModalProps, dependencies
 
   return [
     hookModalAction,
-    modalRef.current,
+    modalRef.current?.modalInstance,
   ] as const
 }
