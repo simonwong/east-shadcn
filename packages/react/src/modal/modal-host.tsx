@@ -33,7 +33,7 @@ export const ModalHost = () => {
 
   const updateModalUtils = (modalList: ActionModalProps[], modal: ActionModalProps) => {
     return modalList.map(item => {
-      if (item.id === item.id) {
+      if (item.id === modal.id) {
         return {
           ...modal,
           props: {
