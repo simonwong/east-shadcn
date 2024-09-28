@@ -1,5 +1,15 @@
 # @easy-shadcn/react
 
+## 0.0.13
+
+### Patch Changes
+
+- [#26](https://github.com/simonwong/easy-shadcn/pull/26) [`6af3ff6`](https://github.com/simonwong/easy-shadcn/commit/6af3ff62672f4869778f5b3ae173945ae86e95b7) Thanks [@simonwong](https://github.com/simonwong)! - useModalAction return modal action ref
+
+- [#26](https://github.com/simonwong/easy-shadcn/pull/26) [`b6bee7c`](https://github.com/simonwong/easy-shadcn/commit/b6bee7cd558f8a433329b22ced33529dbbb89265) Thanks [@simonwong](https://github.com/simonwong)! - update Modal layout style, header、content、footer have self padding
+
+- [#26](https://github.com/simonwong/easy-shadcn/pull/26) [`526c2c6`](https://github.com/simonwong/easy-shadcn/commit/526c2c6b52addf3ff43375599fc96000f4b81026) Thanks [@simonwong](https://github.com/simonwong)! - fix modal update id compare
+
 ## 0.0.12
 
 ### Patch Changes
